@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GameSessionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <module name="distributed-tic-tac-toe.game-session-service.application.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="org.ihor.gamesession.GameSessionApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

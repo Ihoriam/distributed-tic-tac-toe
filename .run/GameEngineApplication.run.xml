@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GameEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="distributed-tic-tac-toe.game-engine-service.application.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="org.ihor.gameengine.GameEngineApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,1 +1,11 @@
 rootProject.name = 'distributed-tic-tac-toe'
+
+include 'game-engine-service:domain'
+include 'game-engine-service:infrastructure:persistence'
+include 'game-engine-service:infrastructure:rest'
+include 'game-engine-service:application'
+
+include 'game-session-service:domain'
+include 'game-session-service:infrastructure:persistence'
+include 'game-session-service:infrastructure:rest'
+include 'game-session-service:application'
