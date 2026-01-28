@@ -7,5 +7,6 @@ include 'game-engine-service:application'
 
 include 'game-session-service:domain'
 include 'game-session-service:infrastructure:persistence'
+include 'game-session-service:infrastructure:game-engine-integration'
 include 'game-session-service:infrastructure:rest'
 include 'game-session-service:application'

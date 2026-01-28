@@ -1,0 +1,11 @@
+package org.ihor.gamesession.rest.dto;
+
+import org.ihor.gamesession.GameState;
+
+public record GameStateDto(String gameId, String[] board, String currentTurn, String status) {
+
+    public static GameStateDto from(GameState gameState) {
+        if (gameState == null) return null;
+        return new GameStateDto(gameState.gameId(), gameState.board(), gameState.currentTurn(), gameState.status());
+    }
+}
