@@ -9,6 +9,7 @@ allprojects {
     version = '0.0.1-SNAPSHOT'
 }
 
+
 subprojects {
     apply plugin: 'java'
 
@@ -24,5 +25,9 @@ subprojects {
 
     tasks.named('test') {
         useJUnitPlatform()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs.add('-parameters')
     }
 }
