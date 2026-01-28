@@ -7,8 +7,6 @@ import org.ihor.gamesession.rest.dto.SimulationResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/sessions")
 public class SessionController {
@@ -21,19 +19,18 @@ public class SessionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public SessionResponse createSession(@RequestBody Map<String, String> body) {
-        String sessionId = body.get("sessionId");
-        return SessionResponse.from(sessionService.createSession(sessionId));
+    public SessionResponse createSession() {
+        return SessionResponse.from(sessionService.createSession());
     }
 
     @PostMapping("/{sessionId}/simulate")
-    public SimulationResponse simulateGame(@PathVariable String sessionId) {
+    public SimulationResponse simulateGame(@PathVariable("sessionId") String sessionId) {
         Session session = sessionService.simulateGame(sessionId);
         return SimulationResponse.from(session);
     }
 
     @GetMapping("/{sessionId}")
-    public SessionResponse getSession(@PathVariable String sessionId) {
+    public SessionResponse getSession(@PathVariable("sessionId") String sessionId) {
         return SessionResponse.from(sessionService.getSession(sessionId));
     }
 }

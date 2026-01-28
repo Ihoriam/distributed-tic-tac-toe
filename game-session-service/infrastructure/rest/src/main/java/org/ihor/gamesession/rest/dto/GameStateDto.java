@@ -6,6 +6,6 @@ public record GameStateDto(String gameId, String[] board, String currentTurn, St
 
     public static GameStateDto from(GameState gameState) {
         if (gameState == null) return null;
-        return new GameStateDto(gameState.gameId(), gameState.board(), gameState.currentTurn(), gameState.status());
+        return new GameStateDto(gameState.gameId(), gameState.board(), gameState.currentTurn(), gameState.status().name());
     }
 }

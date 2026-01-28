@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="RunAll" type="CompoundRunConfigurationType">
+        <toRun name="GameEngineApplication" type="SpringBootApplicationConfigurationType"/>
+        <toRun name="GameSessionApplication" type="SpringBootApplicationConfigurationType"/>
+        <method v="2"/>
+    </configuration>
+</component>

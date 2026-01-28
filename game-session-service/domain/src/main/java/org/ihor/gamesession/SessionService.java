@@ -2,13 +2,15 @@ package org.ihor.gamesession;
 
 import org.ihor.gamesession.exceptions.SessionNotFoundException;
 
-import java.time.Instant;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class SessionService {
 
     private final SessionRepository sessionRepository;
     private final GameEngineGateway gameEngineGateway;
     private final RandomMoveGenerator moveGenerator;
+
+    private final AtomicLong idCounter = new AtomicLong(1);
 
     public SessionService(SessionRepository sessionRepository,
                           GameEngineGateway gameEngineGateway,
@@ -18,12 +20,10 @@ public class SessionService {
         this.moveGenerator = moveGenerator;
     }
 
-    public Session createSession(String sessionId) {
-        if (sessionRepository.findById(sessionId).isPresent()) {
-            throw new IllegalArgumentException("Session already exists: " + sessionId);
-        }
+    public Session createSession() {
+        String sessionId = String.valueOf(idCounter.getAndIncrement());
         GameState gameState = gameEngineGateway.createGame();
-        Session session = new Session(sessionId, gameState.gameId());
+        Session session = new Session(sessionId);
         session.updateGameState(gameState);
         sessionRepository.save(session);
         return session;
@@ -42,13 +42,13 @@ public class SessionService {
 
         String gameId = session.getGameId();
         GameState state = session.getCurrentGameState();
-        while ("PLAYING".equals(state.status())) {
+        while (state.status() == SessionGameStatus.PLAYING) {
             int[] cell = moveGenerator.pickMove(state.board());
             String player = state.currentTurn();
 
             state = gameEngineGateway.makeMove(gameId, cell[0], cell[1], player);
 
-            Move move = new Move(cell[0], cell[1], player, Instant.now());
+            Move move = new Move(cell[0], cell[1], player);
             session.addMove(move);
             session.updateGameState(state);
         }

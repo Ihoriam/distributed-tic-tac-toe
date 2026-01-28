@@ -1,24 +1,18 @@
 package org.ihor.gamesession;
 
-import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Session {
 
     private final String sessionId;
-    private final String gameId;
-    private final List<Move> moveHistory;
+    private final LinkedList<Move> moveHistory;
     private GameState currentGameState;
-    private final Instant createdAt;
-    private Instant completedAt;
 
-    public Session(String sessionId, String gameId) {
+    public Session(String sessionId) {
         this.sessionId = sessionId;
-        this.gameId = gameId;
-        this.moveHistory = new ArrayList<>();
-        this.createdAt = Instant.now();
+        this.moveHistory = new LinkedList<>();
     }
 
     public void addMove(Move move) {
@@ -27,19 +21,17 @@ public class Session {
 
     public void updateGameState(GameState gameState) {
         this.currentGameState = gameState;
-        if (!"PLAYING".equals(gameState.status())) {
-            this.completedAt = Instant.now();
-        }
     }
 
     public boolean isCompleted() {
-        return completedAt != null;
+        return currentGameState != null && currentGameState.status() != SessionGameStatus.PLAYING;
     }
 
     public String getSessionId() { return sessionId; }
-    public String getGameId() { return gameId; }
+
+    public String getGameId() {
+        return currentGameState != null ? currentGameState.gameId() : null;
+    }
     public List<Move> getMoveHistory() { return Collections.unmodifiableList(moveHistory); }
     public GameState getCurrentGameState() { return currentGameState; }
-    public Instant getCreatedAt() { return createdAt; }
-    public Instant getCompletedAt() { return completedAt; }
 }
