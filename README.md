@@ -20,7 +20,7 @@ each other. A web UI displays the board in real-time via WebSockets as moves are
 
 ## Architecture
 
-Each microservice follows **Clean Architecture** with strictly separated modules:
+Each microservice follows **hexagonal** architecture style with strictly separated modules:
 
 ```
 game-engine-service/
