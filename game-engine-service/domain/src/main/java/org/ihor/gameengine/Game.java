@@ -23,7 +23,7 @@ public class Game {
         this.status = GameStatus.PLAYING;
     }
 
-    public MoveResult makeMove(int row, int col, Player player) {
+    public synchronized MoveResult makeMove(int row, int col, Player player) {
         if (status != GameStatus.PLAYING) {
             throw new GameOverException("Game is already over");
         }
