@@ -1,9 +1,10 @@
 package org.ihor.gamesession.gameengine;
 
 import org.ihor.gamesession.GameEngineGateway;
-import org.ihor.gamesession.GameState;
-import org.ihor.gamesession.SessionPlayer;
 import org.ihor.gamesession.exceptions.GameEngineException;
+import org.ihor.gamesession.models.GameState;
+import org.ihor.gamesession.models.SessionGameStatus;
+import org.ihor.gamesession.models.SessionPlayer;
 import org.springframework.web.client.RestClient;
 
 import java.util.Map;
@@ -43,25 +44,15 @@ public class GameEngineClient implements GameEngineGateway {
         }
     }
 
-    @Override
-    public GameState getGame(String gameId) {
-        try {
-            GameEngineResponse response = restClient.get()
-                    .uri("/games/{gameId}", gameId)
-                    .retrieve()
-                .body(GameEngineResponse.class);
-            return toGameState(response);
-        } catch (Exception e) {
-            throw new GameEngineException("Failed to get game: " + gameId, e);
-        }
-    }
-
     private GameState toGameState(GameEngineResponse response) {
         return new GameState(
             response.gameId(),
             response.board(),
             SessionPlayer.valueOf(response.currentTurn()),
-            org.ihor.gamesession.SessionGameStatus.valueOf(response.status())
+            SessionGameStatus.valueOf(response.status())
         );
+    }
+
+    private record GameEngineResponse(String gameId, String[] board, String currentTurn, String status) {
     }
 }

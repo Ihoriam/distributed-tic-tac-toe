@@ -1,6 +1,6 @@
 package org.ihor.gamesession.rest.dto;
 
-import org.ihor.gamesession.GameState;
+import org.ihor.gamesession.models.GameState;
 
 public record GameStateDto(String gameId, String[] board, String currentTurn, String status) {
 

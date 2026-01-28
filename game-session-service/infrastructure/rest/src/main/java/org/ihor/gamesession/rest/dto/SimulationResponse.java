@@ -1,7 +1,7 @@
 package org.ihor.gamesession.rest.dto;
 
-import org.ihor.gamesession.Session;
-import org.ihor.gamesession.SessionGameStatus;
+import org.ihor.gamesession.models.Session;
+import org.ihor.gamesession.models.SessionGameStatus;
 
 public record SimulationResponse(String sessionId, SessionGameStatus finalStatus, int totalMoves, String message) {
 

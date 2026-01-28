@@ -1,5 +1,6 @@
 package org.ihor.gamesession;
 
+import org.ihor.gamesession.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

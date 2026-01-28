@@ -1,4 +1,4 @@
-package org.ihor.gamesession;
+package org.ihor.gamesession.models;
 
 public enum SessionPlayer {
     X, O;

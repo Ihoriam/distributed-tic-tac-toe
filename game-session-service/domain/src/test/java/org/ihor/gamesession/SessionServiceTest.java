@@ -1,6 +1,7 @@
 package org.ihor.gamesession;
 
 import org.ihor.gamesession.exceptions.SessionNotFoundException;
+import org.ihor.gamesession.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

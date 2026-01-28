@@ -1,6 +1,9 @@
 package org.ihor.gameengine;
 
 import org.ihor.gameengine.exceptions.GameNotFoundException;
+import org.ihor.gameengine.models.Game;
+import org.ihor.gameengine.models.GameStatus;
+import org.ihor.gameengine.models.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

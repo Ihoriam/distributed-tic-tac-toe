@@ -1,4 +1,4 @@
-package org.ihor.gamesession;
+package org.ihor.gamesession.models;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -27,11 +27,19 @@ public class Session {
         return currentGameState != null && currentGameState.status() != SessionGameStatus.PLAYING;
     }
 
-    public String getSessionId() { return sessionId; }
+    public String getSessionId() {
+        return sessionId;
+    }
 
     public String getGameId() {
         return currentGameState != null ? currentGameState.gameId() : null;
     }
-    public List<Move> getMoveHistory() { return Collections.unmodifiableList(moveHistory); }
-    public GameState getCurrentGameState() { return currentGameState; }
+
+    public List<Move> getMoveHistory() {
+        return Collections.unmodifiableList(moveHistory);
+    }
+
+    public GameState getCurrentGameState() {
+        return currentGameState;
+    }
 }

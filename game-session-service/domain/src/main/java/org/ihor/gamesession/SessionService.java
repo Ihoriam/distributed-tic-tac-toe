@@ -1,6 +1,7 @@
 package org.ihor.gamesession;
 
 import org.ihor.gamesession.exceptions.SessionNotFoundException;
+import org.ihor.gamesession.models.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 

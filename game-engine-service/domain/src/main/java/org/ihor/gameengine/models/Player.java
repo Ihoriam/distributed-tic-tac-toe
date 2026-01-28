@@ -1,4 +1,4 @@
-package org.ihor.gameengine;
+package org.ihor.gameengine.models;
 
 public enum Player {
     X, O;

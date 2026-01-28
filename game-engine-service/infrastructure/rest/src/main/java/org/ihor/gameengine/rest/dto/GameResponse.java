@@ -1,7 +1,7 @@
 package org.ihor.gameengine.rest.dto;
 
-import org.ihor.gameengine.Game;
-import org.ihor.gameengine.Player;
+import org.ihor.gameengine.models.Game;
+import org.ihor.gameengine.models.Player;
 
 public record GameResponse(String gameId, String[] board, String currentTurn, String status) {
 

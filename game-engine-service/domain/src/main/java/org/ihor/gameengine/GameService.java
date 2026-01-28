@@ -1,6 +1,9 @@
 package org.ihor.gameengine;
 
 import org.ihor.gameengine.exceptions.GameNotFoundException;
+import org.ihor.gameengine.models.Game;
+import org.ihor.gameengine.models.MoveResult;
+import org.ihor.gameengine.models.Player;
 
 import java.util.concurrent.atomic.AtomicLong;
 

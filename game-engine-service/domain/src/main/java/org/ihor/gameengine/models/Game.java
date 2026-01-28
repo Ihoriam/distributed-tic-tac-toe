@@ -1,4 +1,4 @@
-package org.ihor.gameengine;
+package org.ihor.gameengine.models;
 
 import org.ihor.gameengine.exceptions.GameOverException;
 import org.ihor.gameengine.exceptions.InvalidMoveException;
@@ -6,9 +6,9 @@ import org.ihor.gameengine.exceptions.InvalidMoveException;
 public class Game {
 
     private static final int[][] WIN_LINES = {
-            {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
-            {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
-            {0, 4, 8}, {2, 4, 6}
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
+        {0, 4, 8}, {2, 4, 6}
     };
 
     private final String gameId;
@@ -59,8 +59,19 @@ public class Game {
         return false;
     }
 
-    public String getGameId() { return gameId; }
-    public Board getBoard() { return board; }
-    public Player getCurrentTurn() { return currentTurn; }
-    public GameStatus getStatus() { return status; }
+    public String getGameId() {
+        return gameId;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public Player getCurrentTurn() {
+        return currentTurn;
+    }
+
+    public GameStatus getStatus() {
+        return status;
+    }
 }

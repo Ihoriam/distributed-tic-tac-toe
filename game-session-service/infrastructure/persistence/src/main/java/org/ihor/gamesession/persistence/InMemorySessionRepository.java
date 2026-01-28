@@ -1,7 +1,7 @@
 package org.ihor.gamesession.persistence;
 
-import org.ihor.gamesession.Session;
 import org.ihor.gamesession.SessionRepository;
+import org.ihor.gamesession.models.Session;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;

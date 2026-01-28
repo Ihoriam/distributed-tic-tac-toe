@@ -1,8 +1,8 @@
 package org.ihor.gamesession.websocket;
 
-import org.ihor.gamesession.GameState;
-import org.ihor.gamesession.Move;
 import org.ihor.gamesession.SimulationUpdatePublisher;
+import org.ihor.gamesession.models.GameState;
+import org.ihor.gamesession.models.Move;
 import org.ihor.gamesession.websocket.dto.MoveUpdateMessage;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 

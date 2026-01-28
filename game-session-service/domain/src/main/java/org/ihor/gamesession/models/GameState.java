@@ -1,4 +1,4 @@
-package org.ihor.gamesession;
+package org.ihor.gamesession.models;
 
 public record GameState(String gameId, String[] board, SessionPlayer currentTurn, SessionGameStatus status) {
 }

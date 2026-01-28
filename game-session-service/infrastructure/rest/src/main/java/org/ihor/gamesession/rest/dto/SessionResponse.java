@@ -1,6 +1,6 @@
 package org.ihor.gamesession.rest.dto;
 
-import org.ihor.gamesession.Session;
+import org.ihor.gamesession.models.Session;
 
 import java.util.List;
 

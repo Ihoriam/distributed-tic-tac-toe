@@ -2,9 +2,9 @@ package org.ihor.gameengine.rest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import org.ihor.gameengine.Game;
 import org.ihor.gameengine.GameService;
-import org.ihor.gameengine.Player;
+import org.ihor.gameengine.models.Game;
+import org.ihor.gameengine.models.Player;
 import org.ihor.gameengine.rest.dto.GameResponse;
 import org.ihor.gameengine.rest.dto.MoveRequest;
 import org.springframework.http.HttpStatus;

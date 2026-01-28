@@ -1,6 +1,6 @@
 package org.ihor.gamesession.rest.dto;
 
-import org.ihor.gamesession.Move;
+import org.ihor.gamesession.models.Move;
 
 public record MoveDto(int row, int col, String player) {
 

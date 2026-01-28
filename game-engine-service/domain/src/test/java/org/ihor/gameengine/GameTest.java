@@ -2,6 +2,10 @@ package org.ihor.gameengine;
 
 import org.ihor.gameengine.exceptions.GameOverException;
 import org.ihor.gameengine.exceptions.InvalidMoveException;
+import org.ihor.gameengine.models.Game;
+import org.ihor.gameengine.models.GameStatus;
+import org.ihor.gameengine.models.MoveResult;
+import org.ihor.gameengine.models.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

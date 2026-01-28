@@ -1,7 +1,7 @@
 package org.ihor.gameengine.persistence;
 
-import org.ihor.gameengine.Game;
 import org.ihor.gameengine.GameRepository;
+import org.ihor.gameengine.models.Game;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;

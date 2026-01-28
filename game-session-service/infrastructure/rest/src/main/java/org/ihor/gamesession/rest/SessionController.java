@@ -1,8 +1,8 @@
 package org.ihor.gamesession.rest;
 
-import org.ihor.gamesession.Session;
 import org.ihor.gamesession.SessionService;
 import org.ihor.gamesession.SimulationUpdatePublisher;
+import org.ihor.gamesession.models.Session;
 import org.ihor.gamesession.rest.dto.SessionResponse;
 import org.ihor.gamesession.rest.dto.SimulationResponse;
 import org.springframework.http.HttpStatus;
