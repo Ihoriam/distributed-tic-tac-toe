@@ -27,23 +27,15 @@ class GameServiceTest {
     }
 
     @Test
-    void createGameSavesAndReturnsNewGame() {
-        when(gameRepository.findById("game1")).thenReturn(Optional.empty());
+    void createGameSavesAndReturnsNewGameWithSequentialId() {
+        Game game1 = gameService.createGame();
+        Game game2 = gameService.createGame();
 
-        Game game = gameService.createGame("game1");
-
-        assertEquals("game1", game.getGameId());
-        assertEquals(GameStatus.PLAYING, game.getStatus());
-        assertEquals(Player.X, game.getCurrentTurn());
-        verify(gameRepository).save(any(Game.class));
-    }
-
-    @Test
-    void createDuplicateGameThrows() {
-        when(gameRepository.findById("game1")).thenReturn(Optional.of(new Game("game1")));
-
-        assertThrows(IllegalArgumentException.class, () -> gameService.createGame("game1"));
-        verify(gameRepository, never()).save(any());
+        assertEquals("1", game1.getGameId());
+        assertEquals("2", game2.getGameId());
+        assertEquals(GameStatus.PLAYING, game1.getStatus());
+        assertEquals(Player.X, game1.getCurrentTurn());
+        verify(gameRepository, times(2)).save(any(Game.class));
     }
 
     @Test

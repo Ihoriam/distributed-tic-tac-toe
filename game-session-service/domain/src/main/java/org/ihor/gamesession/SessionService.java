@@ -22,8 +22,8 @@ public class SessionService {
         if (sessionRepository.findById(sessionId).isPresent()) {
             throw new IllegalArgumentException("Session already exists: " + sessionId);
         }
-        GameState gameState = gameEngineGateway.createGame(sessionId);
-        Session session = new Session(sessionId, sessionId);
+        GameState gameState = gameEngineGateway.createGame();
+        Session session = new Session(sessionId, gameState.gameId());
         session.updateGameState(gameState);
         sessionRepository.save(session);
         return session;
@@ -40,12 +40,13 @@ public class SessionService {
             throw new IllegalStateException("Session is already completed: " + sessionId);
         }
 
+        String gameId = session.getGameId();
         GameState state = session.getCurrentGameState();
         while ("PLAYING".equals(state.status())) {
             int[] cell = moveGenerator.pickMove(state.board());
             String player = state.currentTurn();
 
-            state = gameEngineGateway.makeMove(sessionId, cell[0], cell[1], player);
+            state = gameEngineGateway.makeMove(gameId, cell[0], cell[1], player);
 
             Move move = new Move(cell[0], cell[1], player, Instant.now());
             session.addMove(move);

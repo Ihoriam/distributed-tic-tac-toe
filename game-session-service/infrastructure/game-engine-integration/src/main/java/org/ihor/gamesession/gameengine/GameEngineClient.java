@@ -16,14 +16,14 @@ public class GameEngineClient implements GameEngineGateway {
     }
 
     @Override
-    public GameState createGame(String gameId) {
+    public GameState createGame() {
         try {
             return restClient.post()
-                    .uri("/games/{gameId}", gameId)
+                .uri("/games")
                     .retrieve()
                     .body(GameState.class);
         } catch (Exception e) {
-            throw new GameEngineException("Failed to create game: " + gameId, e);
+            throw new GameEngineException("Failed to create game", e);
         }
     }
 
