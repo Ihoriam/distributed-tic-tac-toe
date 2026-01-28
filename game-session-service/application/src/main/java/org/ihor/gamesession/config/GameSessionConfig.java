@@ -1,14 +1,13 @@
 package org.ihor.gamesession.config;
 
-import org.ihor.gamesession.GameEngineGateway;
-import org.ihor.gamesession.RandomMoveGenerator;
-import org.ihor.gamesession.SessionRepository;
-import org.ihor.gamesession.SessionService;
-import org.ihor.gamesession.persistence.InMemorySessionRepository;
+import org.ihor.gamesession.*;
 import org.ihor.gamesession.gameengine.GameEngineClient;
+import org.ihor.gamesession.persistence.InMemorySessionRepository;
+import org.ihor.gamesession.websocket.WebSocketSimulationPublisher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import java.util.Random;
 
@@ -35,5 +34,10 @@ public class GameSessionConfig {
                                          GameEngineGateway gameEngineGateway,
                                          RandomMoveGenerator randomMoveGenerator) {
         return new SessionService(sessionRepository, gameEngineGateway, randomMoveGenerator);
+    }
+
+    @Bean
+    public SimulationUpdatePublisher simulationUpdatePublisher(SimpMessagingTemplate messagingTemplate) {
+        return new WebSocketSimulationPublisher(messagingTemplate);
     }
 }

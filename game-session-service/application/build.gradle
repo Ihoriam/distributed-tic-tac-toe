@@ -6,8 +6,10 @@ dependencies {
     implementation project(':game-session-service:infrastructure:persistence')
     implementation project(':game-session-service:infrastructure:game-engine-integration')
     implementation project(':game-session-service:infrastructure:rest')
+    implementation project(':game-session-service:infrastructure:websocket')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
