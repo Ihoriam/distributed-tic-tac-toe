@@ -2,6 +2,7 @@
     <configuration default="false" name="RunAll" type="CompoundRunConfigurationType">
         <toRun name="GameEngineApplication" type="SpringBootApplicationConfigurationType"/>
         <toRun name="GameSessionApplication" type="SpringBootApplicationConfigurationType"/>
+        <toRun name="UiApplication" type="SpringBootApplicationConfigurationType"/>
         <method v="2"/>
     </configuration>
 </component>
