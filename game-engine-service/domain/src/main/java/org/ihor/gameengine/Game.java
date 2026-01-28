@@ -23,7 +23,7 @@ public class Game {
         this.status = GameStatus.PLAYING;
     }
 
-    public void makeMove(int row, int col, Player player) {
+    public MoveResult makeMove(int row, int col, Player player) {
         if (status != GameStatus.PLAYING) {
             throw new GameOverException("Game is already over");
         }
@@ -46,6 +46,7 @@ public class Game {
         } else {
             currentTurn = currentTurn.opposite();
         }
+        return new MoveResult(player, row, col, status);
     }
 
     private boolean checkWin(Player player) {

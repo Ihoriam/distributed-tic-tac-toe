@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Configuration
 public class GameSessionConfig {
@@ -34,6 +36,11 @@ public class GameSessionConfig {
                                          GameEngineGateway gameEngineGateway,
                                          RandomMoveGenerator randomMoveGenerator) {
         return new SessionService(sessionRepository, gameEngineGateway, randomMoveGenerator);
+    }
+
+    @Bean
+    public ExecutorService simulationExecutor() {
+        return Executors.newCachedThreadPool();
     }
 
     @Bean

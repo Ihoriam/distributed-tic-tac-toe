@@ -27,7 +27,7 @@ public class GameService {
 
     public Game makeMove(String gameId, int row, int col, Player player) {
         Game game = getGame(gameId);
-        game.makeMove(row, col, player);
+        MoveResult result = game.makeMove(row, col, player);
         gameRepository.save(game);
         return game;
     }

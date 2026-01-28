@@ -44,7 +44,7 @@ public class SessionService {
         GameState state = session.getCurrentGameState();
         while (state.status() == SessionGameStatus.PLAYING) {
             int[] cell = moveGenerator.pickMove(state.board());
-            String player = state.currentTurn();
+            SessionPlayer player = state.currentTurn();
 
             state = gameEngineGateway.makeMove(gameId, cell[0], cell[1], player);
 
@@ -69,7 +69,7 @@ public class SessionService {
 
         while (state.status() == SessionGameStatus.PLAYING) {
             int[] cell = moveGenerator.pickMove(state.board());
-            String player = state.currentTurn();
+            SessionPlayer player = state.currentTurn();
 
             state = gameEngineGateway.makeMove(gameId, cell[0], cell[1], player);
 

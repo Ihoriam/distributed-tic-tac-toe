@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
 
 @RestController
 @RequestMapping("/sessions")
@@ -17,10 +18,14 @@ public class SessionController {
 
     private final SessionService sessionService;
     private final SimulationUpdatePublisher simulationUpdatePublisher;
+    private final ExecutorService simulationExecutor;
 
-    public SessionController(SessionService sessionService, SimulationUpdatePublisher simulationUpdatePublisher) {
+    public SessionController(SessionService sessionService,
+                             SimulationUpdatePublisher simulationUpdatePublisher,
+                             ExecutorService simulationExecutor) {
         this.sessionService = sessionService;
         this.simulationUpdatePublisher = simulationUpdatePublisher;
+        this.simulationExecutor = simulationExecutor;
     }
 
     @PostMapping
@@ -45,7 +50,8 @@ public class SessionController {
         @PathVariable("sessionId") String sessionId,
         @RequestParam(defaultValue = "500") int delayMs) {
         CompletableFuture.runAsync(() ->
-            sessionService.simulateGameWithSpeed(sessionId, delayMs, simulationUpdatePublisher)
+                sessionService.simulateGameWithSpeed(sessionId, delayMs, simulationUpdatePublisher),
+            simulationExecutor
         );
         return ResponseEntity.accepted().build();
     }

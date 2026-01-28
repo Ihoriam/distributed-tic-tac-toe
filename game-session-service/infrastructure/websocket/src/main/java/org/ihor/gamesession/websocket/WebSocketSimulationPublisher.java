@@ -20,7 +20,7 @@ public class WebSocketSimulationPublisher implements SimulationUpdatePublisher {
             sessionId,
             move.row(),
             move.col(),
-            move.player(),
+            move.player().name(),
             state.board(),
             state.status().name(),
             moveNumber,

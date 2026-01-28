@@ -1,6 +1,7 @@
 package org.ihor.gameengine.rest;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.ihor.gameengine.Game;
 import org.ihor.gameengine.GameService;
 import org.ihor.gameengine.Player;
@@ -30,7 +31,7 @@ public class GameController {
     @Operation(summary = "Make a move", description = "Make a move in the specified game")
     public GameResponse makeMove(
         @PathVariable("gameId") String gameId,
-        @RequestBody MoveRequest request) {
+        @Valid @RequestBody MoveRequest request) {
         Player player = Player.valueOf(request.player());
         Game game = gameService.makeMove(gameId, request.row(), request.col(), player);
         return GameResponse.from(game);

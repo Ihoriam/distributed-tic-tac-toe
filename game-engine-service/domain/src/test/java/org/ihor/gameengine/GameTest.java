@@ -30,9 +30,13 @@ class GameTest {
 
     @Test
     void makeMoveUpdatesBoard() {
-        game.makeMove(0, 0, Player.X);
+        MoveResult result = game.makeMove(0, 0, Player.X);
 
         assertEquals(Player.X, game.getBoard().getCell(0, 0));
+        assertEquals(Player.X, result.player());
+        assertEquals(0, result.row());
+        assertEquals(0, result.col());
+        assertEquals(GameStatus.PLAYING, result.resultingStatus());
     }
 
     @Test
@@ -50,9 +54,10 @@ class GameTest {
         game.makeMove(1, 0, Player.O);
         game.makeMove(0, 1, Player.X);
         game.makeMove(1, 1, Player.O);
-        game.makeMove(0, 2, Player.X);
+        MoveResult result = game.makeMove(0, 2, Player.X);
 
         assertEquals(GameStatus.X_WON, game.getStatus());
+        assertEquals(GameStatus.X_WON, result.resultingStatus());
     }
 
     @Test
